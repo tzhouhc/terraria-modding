@@ -33,8 +33,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Items\Borderlands.cs" />
+    <Compile Include="Projectile\HaroldRound.cs" />
+    <Compile Include="Projectile\HaroldSplitterRoundTop.cs" />
+    <Compile Include="Projectile\HaroldSplitterRoundBottom.cs" />
+    <Compile Include="Projectile\InfectionBullet.cs" />
+    <Compile Include="Projectile\HaroldSplitterRound2.cs" />
+    <Compile Include="Projectile\LongArrow.cs" />
+    <Compile Include="NPCs\ModGlobalNPC.cs" />
+    <Compile Include="NPCs\ModNPCInfo.cs" />
+    <Compile Include="Buffs\Infection.cs" />
+    <Compile Include="Buffs\Slagged.cs" />
+    <Compile Include="Items\UnkemptHarold.cs" />
+    <Compile Include="Items\Infection.cs" />
+    <Compile Include="Items\Infinity.cs" />
+    <Compile Include="Items\Longbow.cs" />
     <Compile Include="Borderlands.cs" />
+    <Compile Include="Angle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
