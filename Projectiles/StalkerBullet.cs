@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -11,14 +12,18 @@ namespace Borderlands.Projectiles
 		public override void SetDefaults()
 		{
 			projectile.CloneDefaults(ProjectileID.Bullet);
-            projectile.name = "Stalker Bullet";
-            projectile.penetrate = 4;
-            aiType = ProjectileID.Bullet;
+			projectile.name = "Stalker Bullet";
+			projectile.penetrate = 4;
+			projectile.light = 0.8f;
+			projectile.extraUpdates = 1;
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 9;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+			aiType = ProjectileID.Bullet;
 		}
 
 		public virtual void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			projectile.penetrate = 0;  // doesn't actually penetrate
+			projectile.Kill();  // doesn't actually penetrate
 		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
@@ -32,7 +37,7 @@ namespace Borderlands.Projectiles
 			{
 				// bounce towards nearest enemy
 				Vector2 move = Vector2.Zero;
-				float distance = 400f;
+				float distance = 720f;
 				bool target = false;
 				for (int k = 0; k < 200; k++)
 				{
@@ -40,7 +45,7 @@ namespace Borderlands.Projectiles
 					{
 						Vector2 newMove = Main.npc[k].Center - projectile.Center;
 						float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
-						if (distanceTo < distance)
+						if (distanceTo < distance && Collision.CanHit(projectile.Center, 0, 0, Main.npc[k].Center, 0, 0))
 						{
 							move = newMove;
 							distance = distanceTo;
@@ -50,9 +55,19 @@ namespace Borderlands.Projectiles
 				}
 				if (target)
 				{
-					AdjustMagnitude(ref move);
-					projectile.velocity = (10 * projectile.velocity + move) / 11f;
-					AdjustMagnitude(ref projectile.velocity);
+					move.Normalize();
+					projectile.velocity = move * 4.5f;  // hard coded velocity
+				}
+				else
+				{
+					if (projectile.velocity.X != oldVelocity.X)
+					{
+						projectile.velocity.X = -oldVelocity.X;
+					}
+					if (projectile.velocity.Y != oldVelocity.Y)
+					{
+						projectile.velocity.Y = -oldVelocity.Y;
+					}
 				}
 				Main.PlaySound(SoundID.Item10, projectile.position);
 			}
@@ -76,9 +91,12 @@ namespace Borderlands.Projectiles
 			if (timeLeft > 0)
 			{
 				Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, 74, projectile.velocity.X * 0.15f, projectile.velocity.Y * 0.15f, 0, new Color(), 1.1f);
-    		Main.PlaySound(SoundID.Item10, projectile.position);
-      }
+				for (int index = 0; index < 10; ++index)
+				{
+					Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 7, 0.0f, 0.0f, 0, new Color(), 1f);
+				}
+				Main.PlaySound(SoundID.Item10, projectile.position);
+			}
 		}
 	}
 }

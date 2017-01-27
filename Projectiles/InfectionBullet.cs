@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Borderlands.NPCs;
 
 namespace Borderlands.Projectiles
 {
@@ -55,7 +56,7 @@ namespace Borderlands.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (crit)
+			if (crit && !target.GetModInfo<ModNPCInfo>(mod).infectionImmune)
 			{
 				target.AddBuff(mod.BuffType("Infection"), 450);
 			}

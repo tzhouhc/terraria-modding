@@ -17,7 +17,7 @@ namespace Borderlands.Items
 		{
 			item.CloneDefaults(ItemID.Handgun);
 			item.name = "Maggie";
-			item.damage = 16;  // This is multiplied by _7_ and has a small spread
+			item.damage = 32;  // This is multiplied by _7_ and has a small spread
 			item.autoReuse = false;
 			item.toolTip = "Monty's wife don't take no guff.";
 			item.useTime = 12;

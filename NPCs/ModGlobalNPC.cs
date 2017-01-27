@@ -13,6 +13,7 @@ namespace Borderlands.NPCs
 		{
 			npc.GetModInfo<ModNPCInfo>(mod).levelOfCriticalAscension = 0;
 			npc.GetModInfo<ModNPCInfo>(mod).infected = false;
+			npc.GetModInfo<ModNPCInfo>(mod).infectionImmune = false;
 			npc.GetModInfo<ModNPCInfo>(mod).slagged = false;
 			npc.takenDamageMultiplier = 1f;
 		}
@@ -67,7 +68,7 @@ namespace Borderlands.NPCs
 					{
 						Vector2 newMove = Main.npc[k].Center - npc.Center;
 						float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
-						if (distanceTo < distance)
+						if (distanceTo < distance && !Main.npc[k].GetModInfo<ModNPCInfo>(mod).infectionImmune)
 						{
 							Main.npc[k].AddBuff(mod.BuffType("Infection"), 450);
 						}

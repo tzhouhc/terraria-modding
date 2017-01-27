@@ -42,6 +42,7 @@
     <Compile Include="NPCs\ModGlobalNPC.cs" />
     <Compile Include="NPCs\ModNPCInfo.cs" />
     <Compile Include="Buffs\Infection.cs" />
+    <Compile Include="Buffs\InfectionImmune.cs" />
     <Compile Include="Buffs\Slagged.cs" />
     <Compile Include="Items\UnkemptHarold.cs" />
     <Compile Include="Items\Infection.cs" />

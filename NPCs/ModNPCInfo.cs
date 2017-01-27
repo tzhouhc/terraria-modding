@@ -7,5 +7,6 @@ namespace Borderlands.NPCs
 		public int levelOfCriticalAscension = 0;
 		public bool infected = false;
 		public bool slagged = false;
+		public bool infectionImmune = false;
 	}
 }

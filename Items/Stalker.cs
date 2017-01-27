@@ -16,14 +16,14 @@ namespace Borderlands.Items
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.Handgun);
-			item.name = "Maggie";
-			item.damage = 16;  // This is multiplied by _7_ and has a small spread
+			item.name = "Stalker";
+			item.damage = 60;  // This is multiplied by _7_ and has a small spread
 			item.autoReuse = false;
 			item.toolTip = "You can run, but you can't hide.";
 			item.autoReuse = true;
 			item.useTime = 12;
 			item.useAnimation = 12;
-			item.shootSpeed = 3f;
+			item.shootSpeed = 4.5f;
 			item.value = 300000;
 			item.rare = 8;
 		}
@@ -47,12 +47,17 @@ namespace Borderlands.Items
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
+			type = mod.ProjectileType("StalkerBullet");
 			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
 			{
 				position += muzzleOffset;
 			}
-			Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8));
+
+			Vector2 direction = new Vector2(speedX, speedY);
+			direction.Normalize();
+			direction = direction * 4.5f;
+			Vector2 perturbedSpeed = direction.RotatedByRandom(MathHelper.ToRadians(5));
 			speedX = perturbedSpeed.X;
 			speedY = perturbedSpeed.Y;
 			return true;

@@ -3,3 +3,23 @@ Borderlands Mod!
 I feel like there's quite a bit of room left for more guns, MORE guns, and MOOOORRRE GUUUUNNNNS.
 
 So I am adding more.
+
+## Weapons
+
+1. Infection
+Low-ish damage, on crit will infect enemy for 12 seconds with high DOT. Enemy can infect other nearby enemies. After infection enemy gains immunity for 12 seconds.
+
+2. Infinity
+Does not use ammo; shoots in a sine wave pattern.
+
+3. Longbow
+Uses bullets to shoot arrows. Always ignites; chance to cause additional burn DOT.
+
+4. Maggie
+Pistol shotgun with very tight spread.
+
+5. Stalker
+Slow moving bullets with high damage and auto-aims at closest enemy in-sight on bounce.
+
+6. Unkempt Harold
+Shoots explosive shots that splits in a 3-5-7 pattern.

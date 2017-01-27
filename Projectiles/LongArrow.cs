@@ -24,7 +24,7 @@ namespace Borderlands.Projectiles
 				Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
 				spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
 			}
-			int index = Dust.NewDust(projectile.position, projectile.width, projectile.height, 76, projectile.velocity.X * 0.15f, projectile.velocity.Y * 0.15f, 0, new Color(), 1.1f);
+			int index = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6, projectile.velocity.X * 0.15f, projectile.velocity.Y * 0.15f, 0, new Color(), 1.1f);
 			Main.dust[index].noGravity = true;
 			Dust.NewDust(projectile.position, projectile.width, projectile.height, 15, projectile.velocity.X * 0.05f, projectile.velocity.Y * 0.05f, 150, new Color(), 0.6f);
 			return true;

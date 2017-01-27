@@ -19,11 +19,23 @@ namespace Borderlands.Buffs
 
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-			if (Main.rand.Next(40) == 0)
+			// weaken the npc
+			if (Main.rand.Next(40) == 0 && npc.lifeMax > 1)
 			{
 				npc.lifeMax -= 1;
 			}
 			npc.GetModInfo<ModNPCInfo>(mod).infected = true;
+			// At end of infection, gain immunity
+			if (npc.buffTime[buffIndex] <= 1)
+			{
+				npc.AddBuff(mod.BuffType("InfectionImmune"), 450);
+			}
+		}
+
+		public override bool ReApply(NPC npc, int time, int buffIndex)
+		{
+			// being re-infected shouldn't have any effect
+			return true;
 		}
 	}
 }
