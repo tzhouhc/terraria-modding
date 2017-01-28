@@ -10,8 +10,8 @@ namespace Borderlands.Items
 	public class Cobra : ModItem
 	{
 		/*
-				The Infinity is a Vladof legendary pistol.
-				It does not consume ammo. And it shoots in a sine pattern.
+				The Cobra is a unique Jakobs sniper rifle.
+				It shoots EXPOSIONS.
 		*/
 		public override void SetDefaults()
 		{
@@ -23,6 +23,7 @@ namespace Borderlands.Items
 			item.toolTip2 = "I'm bringing that gun BACK!";
 			item.useTime = 42;
 			item.useAnimation = 42;
+			item.shootSpeed = 10.5f;
 			item.value = 300000;
 			item.rare = 8;
 		}
@@ -55,7 +56,7 @@ namespace Borderlands.Items
 				speedX *= 1.41f;
 				speedY *= 1.41f;
 			}
-			type = ProjectileId.ExplosiveBullet; // careful not to shoot your hands out!
+			type = ProjectileID.ExplosiveBullet; // careful not to shoot your hands out!
 			return true;
 		}
 	}

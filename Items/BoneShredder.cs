@@ -17,12 +17,13 @@ namespace Borderlands.Items
 		{
 			item.CloneDefaults(ItemID.Handgun);
 			item.name = "Bone Shredder";
-			item.damage = 24;
+			item.damage = 22;
 			item.autoReuse = false;
 			item.toolTip = "The Lead Wind Blows!";
-			item.useTime = 10;
+			item.useTime = 7;
+			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;
-			item.useAnimation = 10;
+			item.useAnimation = 7;
 			item.value = 150000;
 			item.rare = 8;
 		}
