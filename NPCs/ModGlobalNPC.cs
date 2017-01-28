@@ -54,6 +54,11 @@ namespace Borderlands.NPCs
 				}
 				Lighting.AddLight(npc.position, 0.1f, 0.7f, 0.2f);
 			}
+			if (npc.GetModInfo<ModNPCInfo>(mod).slagged)
+			{
+				Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width / 2, npc.height / 2, 27, 0.0f, 0.0f, 0, new Color(), 1f);
+				drawColor = new Color(115, 40, 191);
+			}
 		}
 
 		public override bool PreAI(NPC npc)
@@ -73,6 +78,19 @@ namespace Borderlands.NPCs
 							Main.npc[k].AddBuff(mod.BuffType("Infection"), 450);
 						}
 					}
+				}
+			}
+			return true;
+		}
+
+		public override bool StrikeNPC(NPC npc, ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+		{
+			if (npc.GetModInfo<ModNPCInfo>(mod).slagged)
+			{
+				damage *= 3;
+				if (crit)
+				{
+					damage *= 1.5;
 				}
 			}
 			return true;

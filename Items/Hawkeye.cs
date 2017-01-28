@@ -7,26 +7,25 @@ using Terraria.ModLoader;
 
 namespace Borderlands.Items
 {
-	public class Cobra : ModItem
+	public class Hawkeye : ModItem
 	{
 		/*
-				The Cobra is a unique Jakobs sniper rifle.
-				It shoots EXPOSIONS.
+				The Hawkeye is a Jakobs seraph sniper rifle.
+				It has medium damage but very high crit multiplier.
 		*/
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.Handgun);
-			item.name = "Cobra";
-			item.damage = 135;
+			item.name = "Hawkeye";
+			item.damage = 96;
 			item.autoReuse = false;
-			item.toolTip = "Found out about this I was like DAAAMN,";
-			item.toolTip2 = "I'm bringing that gun BACK!";
-			item.useTime = 42;
-			item.useAnimation = 42;
-			item.crit = 6;
+			item.toolTip = "Eye certain. Finger Lightning. Aim Death.";
+			item.useTime = 45;
+			item.useAnimation = 45;
 			item.UseSound = SoundID.Item40;
 			item.shootSpeed = 10.5f;
 			item.value = 300000;
+			item.crit = 3;
 			item.rare = 8;
 		}
 
@@ -53,12 +52,7 @@ namespace Borderlands.Items
 			{
 				position += muzzleOffset;
 			}
-			if (type == ProjectileID.BulletHighVelocity)
-			{
-				speedX *= 1.41f;
-				speedY *= 1.41f;
-			}
-			type = ProjectileID.ExplosiveBullet; // careful not to shoot your hands out!
+			type = mod.ProjectileType("HawkeyeBullet"); // careful not to shoot your hands out!
 			return true;
 		}
 	}
