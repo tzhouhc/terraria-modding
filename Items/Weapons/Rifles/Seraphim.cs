@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Borderlands.Items.Weapons.Rifles
 {
-	public class Seraphim : ModItem
+	public class Seraphim : ModGun
 	{
 		/*
 				The Seraphim is a seraph Dahl assault rifle.

@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Borderlands.Items.Weapons.Pistols
 {
-	public class Infinity : ModItem
+	public class Infinity : ModGun
 	{
 		/*
 				The Infinity is a Vladof legendary pistol.
@@ -54,6 +54,7 @@ namespace Borderlands.Items.Weapons.Pistols
 			double accelerateFactor = 4;
 			float oscillation = (float)Math.Sin(Main.GlobalTime * accelerateFactor);
 			int arcOfOscillation = 5;
+			ejectCasing(position, speedX, speedY);
 			Vector2 speed = new Vector2(speedX, speedY).RotatedBy(MathHelper.ToRadians(oscillation * arcOfOscillation));
 			Projectile.NewProjectile(position.X, position.Y, speed.X, speed.Y, type, damage, knockBack, player.whoAmI);
 			return false;

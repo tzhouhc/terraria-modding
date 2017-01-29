@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Borderlands.Items.Weapons.Pistols
 {
-	public class UnkemptHarold : ModItem
+	public class UnkemptHarold : ModGun
 	{
 		/*
 				The Unkempt Harold is a legendary Torgue pistol.
@@ -68,6 +68,7 @@ namespace Borderlands.Items.Weapons.Pistols
 				speedX *= 1.41f;
 				speedY *= 1.41f;
 			}
+			ejectCasing(position, speedX, speedY);
 			Vector2 centerRound = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(3));
 			Vector2 topRound = new Vector2(centerRound.X, centerRound.Y).RotatedBy(MathHelper.ToRadians(6));
 			Vector2 bottomRound = new Vector2(centerRound.X, centerRound.Y).RotatedBy(MathHelper.ToRadians(-6));

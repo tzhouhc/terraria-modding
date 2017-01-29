@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Borderlands.Items.Weapons.SRs
 {
-	public class Hawkeye : ModItem
+	public class Hawkeye : ModGun
 	{
 		/*
 				The Hawkeye is a Jakobs seraph sniper rifle.
@@ -52,6 +52,7 @@ namespace Borderlands.Items.Weapons.SRs
 			{
 				position += muzzleOffset;
 			}
+			ejectCasing(position, speedX, speedY, 1.3f);
 			type = mod.ProjectileType("HawkeyeBullet"); // careful not to shoot your hands out!
 			return true;
 		}

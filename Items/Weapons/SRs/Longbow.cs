@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Borderlands.Items.Weapons.SRs
 {
-	public class Longbow : ModItem
+	public class Longbow : ModGun
 	{
 		/*
 				The Longbow is a Hyperion E-tech sniper rifle.

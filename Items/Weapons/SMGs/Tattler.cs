@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Borderlands.Items.Weapons.SMGs
 {
-	public class Tattler : ModItem
+	public class Tattler : ModGun
 	{
 		/*
 				The Tattler is a seraph Bandit SMG.
@@ -55,6 +55,7 @@ namespace Borderlands.Items.Weapons.SMGs
 			int numberProjectiles = 3;
 			Vector2 velocity = new Vector2(speedX, speedY);
 			velocity.Normalize();
+			ejectCasing(position, speedX, speedY, 0.8f);
 			for (int i = 0; i < numberProjectiles; i++)
 			{
 				Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(15)) * 5.2f; // very large spread.

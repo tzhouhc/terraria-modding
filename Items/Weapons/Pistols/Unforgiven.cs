@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Borderlands.Items.Weapons.Pistols
 {
-	public class Unforgiven : ModItem
+	public class Unforgiven : ModGun
 	{
 		/*
 				The Maggie is a legendary Jakobs pistol.
@@ -49,6 +49,7 @@ namespace Borderlands.Items.Weapons.Pistols
 			{
 				position += muzzleOffset;
 			}
+			ejectCasing(position, speedX, speedY, 1.2f);
 			Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(2));
 			speedX = perturbedSpeed.X;
 			speedY = perturbedSpeed.Y;

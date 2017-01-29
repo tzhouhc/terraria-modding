@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Borderlands.Items.Weapons.Pistols
 {
-	public class Maggie : ModItem
+	public class Maggie : ModGun
 	{
 		/*
 				The Maggie is a legendary Jakobs pistol.
@@ -50,6 +50,7 @@ namespace Borderlands.Items.Weapons.Pistols
 				position += muzzleOffset;
 			}
 			int numberProjectiles = 7;
+			ejectCasing(position, speedX, speedY);
 			for (int i = 0; i < numberProjectiles; i++)
 			{
 				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(3)); // very tight spread.

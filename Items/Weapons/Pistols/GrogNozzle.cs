@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Borderlands.Items.Weapons.Pistols
 {
-	public class GrogNozzle : ModItem
+	public class GrogNozzle : ModGun
 	{
 		/*
 				The Maggie is a legendary Jakobs pistol.
@@ -45,6 +45,7 @@ namespace Borderlands.Items.Weapons.Pistols
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
+			ejectCasing(position, speedX, speedY);
 			type = mod.ProjectileType("GrogBullet");
 			return true;
 		}

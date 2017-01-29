@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Borderlands.Items.Weapons.Pistols
 {
-	public class Stalker : ModItem
+	public class Stalker : ModGun
 	{
 		/*
 				The Stalker is a legendary Vladof pistol.
@@ -53,7 +53,7 @@ namespace Borderlands.Items.Weapons.Pistols
 			{
 				position += muzzleOffset;
 			}
-
+			ejectCasing(position, speedX, speedY);
 			Vector2 direction = new Vector2(speedX, speedY);
 			direction.Normalize();
 			direction = direction * 4.5f;

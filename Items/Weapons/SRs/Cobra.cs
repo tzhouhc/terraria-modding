@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Borderlands.Items.Weapons.SRs
 {
-	public class Cobra : ModItem
+	public class Cobra : ModGun
 	{
 		/*
 				The Cobra is a unique Jakobs sniper rifle.
@@ -58,6 +58,7 @@ namespace Borderlands.Items.Weapons.SRs
 				speedX *= 1.41f;
 				speedY *= 1.41f;
 			}
+			ejectCasing(position, speedX, speedY, 1.3f);
 			type = ProjectileID.ExplosiveBullet; // careful not to shoot your hands out!
 			return true;
 		}

@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Borderlands.Items.Weapons.SMGs
 {
-	public class BoneShredder : ModItem
+	public class BoneShredder : ModGun
 	{
 		/*
 				The Bone Shredder is a unique Bandit SMG.
@@ -51,6 +51,7 @@ namespace Borderlands.Items.Weapons.SMGs
 				position += muzzleOffset;
 			}
 			int numberProjectiles = 3;
+			ejectCasing(position, speedX, speedY, 0.8f);
 			for (int i = 0; i < numberProjectiles; i++)
 			{
 				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // very large spread.
