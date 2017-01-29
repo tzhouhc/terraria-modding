@@ -14,6 +14,8 @@ namespace Borderlands.Projectiles
 			projectile.CloneDefaults(ProjectileID.Bullet);
 			projectile.name = "Seraphim Bullet";
 			projectile.penetrate = 4;
+			projectile.ranged = false;
+			projectile.magic = true;
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 4;
 			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
 			aiType = ProjectileID.Bullet;
@@ -56,9 +58,10 @@ namespace Borderlands.Projectiles
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-			if (Math.rand.Next(100) <= 14)
+			if (Main.rand.Next(2) <= 1)
 			{
-				target.AddBuff(BuffID.Burning, 400);
+				target.AddBuff(BuffID.OnFire, 400);
+				target.AddBuff(BuffID.CursedInferno, 400);
 			}
 		}
 	}

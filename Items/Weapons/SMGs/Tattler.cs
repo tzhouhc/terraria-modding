@@ -23,7 +23,7 @@ namespace Borderlands.Items.Weapons.SMGs
 			item.useTime = 7;
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;
-			item.shootSpeed = 5f;
+			item.shootSpeed = 5.2f;
 			item.useAnimation = 7;
 			item.value = 350000;
 			item.rare = 8;
@@ -53,12 +53,19 @@ namespace Borderlands.Items.Weapons.SMGs
 				position += muzzleOffset;
 			}
 			int numberProjectiles = 3;
+			Vector2 velocity = new Vector2(speedX, speedY);
+			velocity.Normalize();
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15)); // very large spread.
+				Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(15)) * 5.2f; // very large spread.
 				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return false;
+		}
+
+		public override bool ConsumeAmmo(Player player)
+		{
+			return (Main.rand.Next(3) == 0); 
 		}
 	}
 }

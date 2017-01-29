@@ -83,6 +83,22 @@ namespace Borderlands.NPCs
 			return true;
 		}
 
+		public virtual void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		{
+			// for (int k = 0; k < 200; k++)
+			// {
+			// 	Player player = Main.player[k];
+			// 	if (player.inventory[player.selectedItem].type == mod.ItemType("GrogNozzle"))
+			// 	{
+			// 		player.statLife += (int)(damage * 0.65f);
+			// 		if (player.statLife > player.statLifeMax2)
+			// 		{
+			// 			player.statLife = player.statLifeMax2;  // this bit still needs work
+			// 		}
+			// 	}
+			// }
+		}
+
 		public override bool StrikeNPC(NPC npc, ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
 		{
 			if (npc.GetModInfo<ModNPCInfo>(mod).slagged)

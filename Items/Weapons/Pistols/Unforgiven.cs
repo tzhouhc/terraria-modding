@@ -5,38 +5,32 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Borderlands.Items.Weapons.Rifles
+namespace Borderlands.Items.Weapons.Pistols
 {
-	public class Seraphim : ModItem
+	public class Unforgiven : ModItem
 	{
 		/*
-				The Seraphim is a seraph Dahl assault rifle.
-				It burst fires slow moving fire beams.
+				The Maggie is a legendary Jakobs pistol.
+				It is a super power pistol.
 		*/
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.LaserMachinegun);
-			item.name = "Seraphim";
-			item.damage = 75;
-			item.ranged = false;
-			item.magic = true;
+			item.CloneDefaults(ItemID.Handgun);
+			item.name = "Unforgiven";
+			item.damage = 325;  // This is multiplied by _7_ and has a small spread
 			item.autoReuse = false;
-			item.toolTip = "Holy? Holy? Holey!";
-			item.reuseDelay = 20;
-			item.useAnimation = 15;
-			item.UseSound = SoundID.Item12;
-			item.useTime = 5;
-			item.mana = 8;
-			item.shootSpeed = 7.5f;
-			item.value = 150000;
+			item.toolTip = "It's a helluva thing...";
+			item.useTime = 54;
+			item.useAnimation = 54;
+			item.value = 350000;
 			item.rare = 8;
 		}
 
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.LaserMachinegun, 1);
-			recipe.AddIngredient(ItemID.MagmaStone, 1);
+			recipe.AddIngredient(ItemID.VenusMagnum, 1);
+			recipe.AddIngredient(ItemID.EyeoftheGolem, 1);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -55,10 +49,10 @@ namespace Borderlands.Items.Weapons.Rifles
 			{
 				position += muzzleOffset;
 			}
-			type = mod.ProjectileType("SeraphimBullet");
-			Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5)); // very large spread.
-			Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-			return false;
+			Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(2));
+			speedX = perturbedSpeed.X;
+			speedY = perturbedSpeed.Y;
+			return true;
 		}
 	}
 }
