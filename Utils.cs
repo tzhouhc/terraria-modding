@@ -7,7 +7,53 @@ using Terraria.ModLoader;
 
 namespace Borderlands
 {
-	// public NPC[] npcInRange(NPC npc, float range)
+	// public int vanillaBulletToModBullet(ref int type)
+	// {
+	// 	switch type
+	// 	{
+	// 		case ProjectileID.Bullet:
+	// 			return mod.ProjectileType("ModBullet");
+	// 			break;
+	// 		case ProjectileID.CrystalBullet:
+	// 			return mod.ProjectileType("ModCrystalBullet");
+	// 			break;
+	// 		case ProjectileID.CursedBullet:
+	// 			return mod.ProjectileType("ModCursedBullet");
+	// 			break;
+	// 		case ProjectileID.ChlorophyteBullet:
+	// 			return mod.ProjectileType("ModChlorophyteBullet");
+	// 			break;
+	// 		case ProjectileID.BulletHighVelocity:
+	// 			return mod.ProjectileType("ModBulletHighVelocity");
+	// 			break;
+	// 		case ProjectileID.IchorBullet:
+	// 			return mod.ProjectileType("ModIchorBullet");
+	// 			break;
+	// 		case ProjectileID.VenomBullet:
+	// 			return mod.ProjectileType("ModVenomBullet");
+	// 			break;
+	// 		case ProjectileID.PartyBullet:
+	// 			return mod.ProjectileType("ModPartyBullet");
+	// 			break;
+	// 		case ProjectileID.NanoBullet:
+	// 			return mod.ProjectileType("ModNanoBullet");
+	// 			break;
+	// 		case ProjectileID.ExplosiveBullet:
+	// 			return mod.ProjectileType("ModExplosiveBullet");
+	// 			break;
+	// 		case ProjectileID.GoldenBullet:
+	// 			return mod.ProjectileType("ModGoldenBullet");
+	// 			break;
+	// 		case ProjectileID.MoonlordBullet:
+	// 			return mod.ProjectileType("ModMoonlordBullet");
+	// 			break;
+	// 		default:
+	// 			return mod.ProjectileType("ModBullet");
+	// 			break;
+	// 	}
+	// }
+
+	// public NPC[] closestNpcInRange(NPC npc, float range)
 	// {
 	// 	NPC[] npcs = new NPC[201];
 	// 	int index = 0;

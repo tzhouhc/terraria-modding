@@ -5,24 +5,25 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Borderlands.Items
+namespace Borderlands.Items.Weapons.SMGs
 {
-	public class Maggie : ModItem
+	public class BoneShredder : ModItem
 	{
 		/*
-				The Maggie is a legendary Jakobs pistol.
-				It is a masher-type revolver with a tight spread.
+				The Bone Shredder is a unique Bandit SMG.
+				It fights triple-bullets in a large spread.
 		*/
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.Handgun);
-			item.name = "Maggie";
-			item.damage = 32;  // This is multiplied by _7_ and has a small spread
-			item.autoReuse = false;
-			item.toolTip = "Monty's wife don't take no guff.";
-			item.useTime = 12;
-			item.useAnimation = 12;
-			item.value = 300000;
+			item.name = "Bone Shredder";
+			item.damage = 22;
+			item.toolTip = "The Lead Wind Blows!";
+			item.useTime = 7;
+			item.UseSound = SoundID.Item11;
+			item.autoReuse = true;
+			item.useAnimation = 7;
+			item.value = 150000;
 			item.rare = 8;
 		}
 
@@ -30,7 +31,7 @@ namespace Borderlands.Items
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.VenusMagnum, 1);
-			recipe.AddIngredient(ItemID.TacticalShotgun, 1);
+			recipe.AddIngredient(ItemID.ChainGun, 1);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -49,10 +50,10 @@ namespace Borderlands.Items
 			{
 				position += muzzleOffset;
 			}
-			int numberProjectiles = 7;
+			int numberProjectiles = 3;
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(3)); // very tight spread.
+				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // very large spread.
 				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return false;

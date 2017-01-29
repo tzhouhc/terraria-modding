@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Borderlands.Items
+namespace Borderlands.Items.Weapons.Pistols
 {
 	public class Infinity : ModItem
 	{

@@ -5,36 +5,36 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Borderlands.Items
+namespace Borderlands.Items.Weapons.SMGs
 {
-	public class Hawkeye : ModItem
+	public class Tattler : ModItem
 	{
 		/*
-				The Hawkeye is a Jakobs seraph sniper rifle.
-				It has medium damage but very high crit multiplier.
+				The Tattler is a seraph Bandit SMG.
+				It fights triple-bullets in a large spread.
 		*/
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.Handgun);
-			item.name = "Hawkeye";
-			item.damage = 96;
+			item.name = "Tattler";
+			item.damage = 37;
 			item.autoReuse = false;
-			item.toolTip = "Eye certain. Finger Lightning. Aim Death.";
-			item.useTime = 45;
-			item.useAnimation = 45;
-			item.UseSound = SoundID.Item40;
-			item.shootSpeed = 10.5f;
-			item.value = 300000;
-			item.crit = 3;
+			item.toolTip = "If thou'st would'st snitch'st, acquire thine stich!";
+			item.useTime = 7;
+			item.UseSound = SoundID.Item11;
+			item.autoReuse = true;
+			item.shootSpeed = 5f;
+			item.useAnimation = 7;
+			item.value = 350000;
 			item.rare = 8;
 		}
 
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.SniperRifle, 1);
-			recipe.AddIngredient(ItemID.RocketLauncher, 1);
-			recipe.AddTile(TileID.MythrilAnvil);  // careful preparation
+			recipe.AddIngredient(ItemID.VenusMagnum, 1);
+			recipe.AddIngredient(ItemID.ChainGun, 1);
+			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 			// Alternate simple recipe
@@ -52,8 +52,13 @@ namespace Borderlands.Items
 			{
 				position += muzzleOffset;
 			}
-			type = mod.ProjectileType("HawkeyeBullet"); // careful not to shoot your hands out!
-			return true;
+			int numberProjectiles = 3;
+			for (int i = 0; i < numberProjectiles; i++)
+			{
+				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15)); // very large spread.
+				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+			}
+			return false;
 		}
 	}
 }

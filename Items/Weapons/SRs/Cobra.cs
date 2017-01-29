@@ -5,35 +5,37 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Borderlands.Items
+namespace Borderlands.Items.Weapons.SRs
 {
-	public class BoneShredder : ModItem
+	public class Cobra : ModItem
 	{
 		/*
-				The Bone Shredder is a unique Bandit SMG.
-				It fights triple-bullets in a large spread.
+				The Cobra is a unique Jakobs sniper rifle.
+				It shoots EXPOSIONS.
 		*/
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.Handgun);
-			item.name = "Bone Shredder";
-			item.damage = 22;
+			item.name = "Cobra";
+			item.damage = 135;
 			item.autoReuse = false;
-			item.toolTip = "The Lead Wind Blows!";
-			item.useTime = 7;
-			item.UseSound = SoundID.Item11;
-			item.autoReuse = true;
-			item.useAnimation = 7;
-			item.value = 150000;
+			item.toolTip = "Found out about this I was like DAAAMN,";
+			item.toolTip2 = "I'm bringing that gun BACK!";
+			item.useTime = 42;
+			item.useAnimation = 42;
+			item.crit = 6;
+			item.UseSound = SoundID.Item40;
+			item.shootSpeed = 10.5f;
+			item.value = 300000;
 			item.rare = 8;
 		}
 
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.VenusMagnum, 1);
-			recipe.AddIngredient(ItemID.ChainGun, 1);
-			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddIngredient(ItemID.SniperRifle, 1);
+			recipe.AddIngredient(ItemID.RocketLauncher, 1);
+			recipe.AddTile(TileID.MythrilAnvil);  // careful preparation
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 			// Alternate simple recipe
@@ -51,13 +53,13 @@ namespace Borderlands.Items
 			{
 				position += muzzleOffset;
 			}
-			int numberProjectiles = 3;
-			for (int i = 0; i < numberProjectiles; i++)
+			if (type == ProjectileID.BulletHighVelocity)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // very large spread.
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+				speedX *= 1.41f;
+				speedY *= 1.41f;
 			}
-			return false;
+			type = ProjectileID.ExplosiveBullet; // careful not to shoot your hands out!
+			return true;
 		}
 	}
 }
