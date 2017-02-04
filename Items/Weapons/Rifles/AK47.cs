@@ -5,35 +5,35 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Borderlands.Items.Weapons.SMGs
+namespace Borderlands.Items.Weapons.Rifles
 {
-	public class BoneShredder : ModGun
+	public class AK47 : ModGun
 	{
 		/*
-				The Bone Shredder is a unique Bandit SMG.
-				It fights triple-bullets in a large spread.
+				The AK47! Need I say more?
 		*/
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.Handgun);
-			item.name = "Bone Shredder";
-			item.damage = 19;
-			item.toolTip = "The Lead Wind Blows!";
-			item.useTime = 7;
+			item.name = "AK47";
+			item.damage = 48;
+			item.toolTip = "For the motherland!";
+			item.useTime = 12;
+			item.knockBack = 2;
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;
-			item.useAnimation = 7;
+			item.useAnimation = 12;
 			item.value = 150000;
-			item.rare = 8;
+			item.rare = 5;
 		}
 
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Handgun, 1);
-			recipe.AddIngredient(ItemID.Bone, 200);
-			recipe.AddIngredient(mod.ItemType("SMGKit"), 1);
-			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddIngredient(ItemID.ClockworkAssaultRifle, 1);
+			recipe.AddIngredient(ItemID.Wood, 20);
+			recipe.AddIngredient(mod.ItemType("RifleKit"), 20);
+			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 			// Alternate simple recipe
@@ -51,13 +51,9 @@ namespace Borderlands.Items.Weapons.SMGs
 			{
 				position += muzzleOffset;
 			}
-			int numberProjectiles = 3;
-			ejectCasing(position, speedX, speedY, 0.8f);
-			for (int i = 0; i < numberProjectiles; i++)
-			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // very large spread.
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-			}
+			ejectCasing(position, speedX, speedY, 1f);
+			Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10)); // large spread.
+			Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			return false;
 		}
 	}

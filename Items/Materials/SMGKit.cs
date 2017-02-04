@@ -15,5 +15,28 @@ namespace Borderlands.Items.Materials
 			item.toolTip = "Used for converting weapons.";
 			item.rare = 4;
 		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.IllegalGunParts, 1);
+			recipe.AddIngredient(ItemID.Chain, 1);
+			recipe.AddIngredient(ItemID.MythrilBar, 5);
+			recipe.AddIngredient(ItemID.SoulofLight, 10);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+
+			ModRecipe recipe2 = new ModRecipe(mod);
+			recipe2.AddIngredient(ItemID.IllegalGunParts, 1);
+			recipe2.AddIngredient(ItemID.Chain, 1);
+			recipe2.AddIngredient(ItemID.OrichalcumBar, 5);
+			recipe2.AddIngredient(ItemID.SoulofNight, 10);
+			recipe2.AddTile(TileID.MythrilAnvil);
+			recipe2.SetResult(this);
+			recipe2.AddRecipe();
+
+			// You use the SMG kit to convert the handgun to SMGs.
+		}
 	}
 }
